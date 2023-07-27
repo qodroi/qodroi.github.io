@@ -86,7 +86,7 @@ enum {
 ```
 **Finally** is `qlen`, that is the `tx_queue_len`, this is the maximum number of frames used by the **link layer** that can be queued on the device's transmission queue. Set to 1000 by default for Ethernet devices. Changeable.
 
-I have mentioned both frames/packet and both link layer and network layer. It is quite a complicated topic to discuss here, but it's related to the OSI layers and defined by the protocol data unit. See: [Wikipedia: Protocol Data Unit](`https://en.wikipedia.org/wiki/Protocol_data_unit`)
+I have mentioned both frames/packet and both link layer and network layer. It's off-topic and we won't talk about it, but we can just say that it's related to the [Internet Protocol Suite](https://en.wikipedia.org/wiki/Internet_protocol_suite) and defined by the [Protocol Data Unit](https://en.wikipedia.org/wiki/Protocol_data_unit)
 
 ---
 We have covered the first 'line' of `ip a`'s output, moving on to the next one.
