@@ -24,9 +24,9 @@ The `ip a` _only_ needs to communicate with the software defined interface, thro
 
 Each network interface is represented by the `net_device` structure defined in `include/linux/netdevice.h`, and contains all the necessary information required in order to understand, manipulate, and isolate network interfaces from each other. The `net_device` struct is huge, so we'll only cover what's needed to understand `ip a`.
 
-Firstly, the actual name of the interface, is sometimes defined by the **Predictable Network Interface naming** mechanism (you can control the behaviour via systemd; not discussed in here). In my case, my network interface name is `enp5s0` and the crafting goes like this:
+Firstly, the actual name of the interface, is sometimes defined by the **Predictable Network Interface naming** mechanism (you can control the behaviour via systemd; not discussed here). In my case, my network interface name is `enp5s0` and the crafting goes like this:
 
-- Since my network interface is of type Ethernet (See available types in ` /include/uapi/linux/if_arp.h`, the first two chars are `en`.
+- Since my network interface is of type Ethernet (See available types in `/include/uapi/linux/if_arp.h`), the first two chars are `en`.
 
 - Next is the pci bus number; My Ethernet PCI controller device is at bus number `05` (can be seen via `lspci`). Hence, the next two chars are `p5`.
 
@@ -60,7 +60,7 @@ IFF_LOWER_UP: driver signals L1 up. Volatile
 
 **Next** is `qdisc`, which shows the current used queueing mechanism for incoming packets. There are a couple mechanisms, however, we won't cover them in here, but their general role is to define rules, such as priorities and efficiency rules. Mine uses the `CoDel - Fair Queuing (FQ) with Controlled Delay (CoDel)` (`fq_codel`). 
 
-I believe `fq_codel` is the default used for network interfaces, though I'm not sure. I saw somewhere that systemd defines `net.core.default_qdisc = fq_codel`, but it may have been changed since then. In addition, For the curious reader, there is a great (!) cover up of mechanisms at `https://help.mikrotik.com/docs/display/ROS/Queues`.
+I believe `fq_codel` is the default used for network interfaces, though I'm not sure. I saw somewhere that systemd defines `net.core.default_qdisc = fq_codel`, but it may have been changed since then. In addition, For the curious reader, there is a great (!) cover up of mechanisms at *[mikrotik Queues Docs](https://help.mikrotik.com/docs/display/ROS/Queues)*.
 
 **Next**, is `state` which simply shows the current state of the device. Mine shows `UP` since my network interface is online and setup, and able to transmit and receive packets.
 
@@ -86,7 +86,7 @@ enum {
 ```
 **Finally** is `qlen`, that is the `tx_queue_len`, this is the maximum number of frames used by the **link layer** that can be queued on the device's transmission queue. Set to 1000 by default for Ethernet devices. Changeable.
 
-I have mentioned both frames/packet and both link layer and network layer. It is quite a complicated topic to discuss here, but it's related to the OSI layers and defined by the protocol data unit. (See `https://en.wikipedia.org/wiki/Protocol_data_unit`)
+I have mentioned both frames/packet and both link layer and network layer. It is quite a complicated topic to discuss here, but it's related to the OSI layers and defined by the protocol data unit. See: [Wikipedia: Protocol Data Unit](`https://en.wikipedia.org/wiki/Protocol_data_unit`)
 
 ---
 We have covered the first 'line' of `ip a`'s output, moving on to the next one.

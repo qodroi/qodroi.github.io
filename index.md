@@ -1,1 +1,1 @@
-I will cover topics I think it's worth talking about. I'm mainly interested in Linux kernel developement, with focus on net, x86 arch, and a little of memory-management.
+I will cover topics I think are worth talking about. I'm mainly interested in Linux kernel developement, with focus on net, x86 arch, and a little of memory-management.
